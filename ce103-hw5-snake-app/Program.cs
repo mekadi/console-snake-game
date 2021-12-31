@@ -19,15 +19,10 @@ namespace ce103_hw5_snake_app
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Black;
                 // after clear, bg and fg colors will be filled in console
+
                 Console.Clear();
                 SG.mainMenu();
             }
-            //for (int i = 0; i < 1000; i++)
-            //{
-            //    Console.Write(i);
-            //    Console.WriteLine((char)i);
-            //}
-            //Console.ReadLine();
         }
     }
 }
