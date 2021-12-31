@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ce103-hw5-snake-app", "ce103-hw5-snake-app\ce103-hw5-snake-app.csproj", "{0F507DF1-6925-40AC-A5F0-1CE272DE23E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ce103-hw5-snake-dll", "ce103-hw5-snake-dll\ce103-hw5-snake-dll.csproj", "{BED88C13-3B16-4B77-BA32-AEF3240CFE1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ce103-hw5-snake-test", "ce103-hw5-snake-test\ce103-hw5-snake-test.csproj", "{5369142D-2C55-4198-9181-93E538CE9CDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0F507DF1-6925-40AC-A5F0-1CE272DE23E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F507DF1-6925-40AC-A5F0-1CE272DE23E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F507DF1-6925-40AC-A5F0-1CE272DE23E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BED88C13-3B16-4B77-BA32-AEF3240CFE1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BED88C13-3B16-4B77-BA32-AEF3240CFE1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BED88C13-3B16-4B77-BA32-AEF3240CFE1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BED88C13-3B16-4B77-BA32-AEF3240CFE1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5369142D-2C55-4198-9181-93E538CE9CDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5369142D-2C55-4198-9181-93E538CE9CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5369142D-2C55-4198-9181-93E538CE9CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5369142D-2C55-4198-9181-93E538CE9CDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
