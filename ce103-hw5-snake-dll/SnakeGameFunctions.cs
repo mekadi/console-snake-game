@@ -172,7 +172,7 @@ namespace ce103_hw5_snake_dll
             }
 
             // Creates message for not playing games for high scores section
-            if (intarr.Length == 1) { Console.Write("***You should play game to see high scores***"); }
+            if (intarr.Length == 1 && intarr[0] == 0) { Console.Write("***You should gain scores to see high scores***"); }
 
             // Bubble Sort for sorting values
             for (int i = 0; i < intarr.Length - 1; i++)
