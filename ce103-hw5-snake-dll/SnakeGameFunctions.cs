@@ -45,6 +45,7 @@ namespace ce103_hw5_snake_dll
             // Print selection arrow
             Console.SetCursorPosition(x - 1, y);
             Console.Write((char)9658);
+            Console.SetCursorPosition(x - 1, y);
 
             // While loop for main menu selection
             while (key != ConsoleKey.Enter)
@@ -54,22 +55,27 @@ namespace ce103_hw5_snake_dll
                 {
                     case ConsoleKey.UpArrow: 
                     {
+                            // Console set before and after write functions because if you press other characters then messing
                             Console.SetCursorPosition(x - 1, y);
                             Console.Write((char)32);
+                            Console.SetCursorPosition(x - 1, y);
                             y--;
                             if (y == 13) { y = 17; }
                             Console.SetCursorPosition(x - 1, y);
                             Console.Write((char)9658);
+                            Console.SetCursorPosition(x - 1, y);
                             break;
                     }
                     case ConsoleKey.DownArrow: 
                     {
                             Console.SetCursorPosition(x - 1, y);
                             Console.Write((char)32);
+                            Console.SetCursorPosition(x - 1, y);
                             y++;
                             if (y == 18) { y = 14; }
                             Console.SetCursorPosition(x - 1, y);
                             Console.Write((char)9658);
+                            Console.SetCursorPosition(x - 1, y);
                             break; 
                     }
                     case ConsoleKey.Enter:
@@ -80,7 +86,7 @@ namespace ce103_hw5_snake_dll
                             else { Environment.Exit(0); }
                             break;
                     }
-                    default: { Console.SetCursorPosition(x - 1, y); Console.Write((char)9658); break; }
+                    default: { Console.SetCursorPosition(x - 1, y); Console.Write((char)9658); Console.SetCursorPosition(x - 1, y); break; }
                 }
             }
         }
@@ -158,10 +164,12 @@ namespace ce103_hw5_snake_dll
         {
             Console.SetCursorPosition(snakeBodyCoord[0, lengthOfSnake - 1], snakeBodyCoord[1, lengthOfSnake - 1]);
             Console.Write(" ");
+            Console.SetCursorPosition(0, 0);
 
             // Changes the head of the snake to a body part
             Console.SetCursorPosition(snakeBodyCoord[0, 0], snakeBodyCoord[1, 0]);
             Console.Write("O");
+            Console.SetCursorPosition(0, 0);
 
             // Write tempDirection for backward keys
             Direction tempDirection = currentDirection;
@@ -177,6 +185,7 @@ namespace ce103_hw5_snake_dll
                 Console.Write("►");
             if (currentDirection == Direction.Left)
                 Console.Write("◄");
+            Console.SetCursorPosition(0, 0);
         }
 
         /**
@@ -415,6 +424,7 @@ namespace ce103_hw5_snake_dll
             // Print selection arrow
             Console.SetCursorPosition(x - 1, y);
             Console.Write((char)9658);
+            Console.SetCursorPosition(x - 1, y);
 
             // While loop for menu selection
             while (key != ConsoleKey.Enter)
@@ -426,20 +436,24 @@ namespace ce103_hw5_snake_dll
                         {
                             Console.SetCursorPosition(x - 1, y);
                             Console.Write((char)32);
+                            Console.SetCursorPosition(x - 1, y);
                             y--;
                             if (y == 9) { y = 13; }
                             Console.SetCursorPosition(x - 1, y);
                             Console.Write((char)9658);
+                            Console.SetCursorPosition(x - 1, y);
                             break;
                         }
                     case ConsoleKey.DownArrow:
                         {
                             Console.SetCursorPosition(x - 1, y);
                             Console.Write((char)32);
+                            Console.SetCursorPosition(x - 1, y);
                             y++;
                             if (y == 14) { y = 10; }
                             Console.SetCursorPosition(x - 1, y);
                             Console.Write((char)9658);
+                            Console.SetCursorPosition(x - 1, y);
                             break;
                         }
                     case ConsoleKey.Enter:
@@ -450,7 +464,7 @@ namespace ce103_hw5_snake_dll
                             else
                             {
                                 Console.Clear();
-                                int value = 20;
+                                int value;
 
                                 // While loop for wrong enters
                                 while (true)
@@ -463,7 +477,7 @@ namespace ce103_hw5_snake_dll
                                 return value;
                             }
                         }
-                    default: { Console.SetCursorPosition(x - 1, y); Console.Write((char)9658); break; }
+                    default: { Console.SetCursorPosition(x - 1, y); Console.Write((char)9658); Console.SetCursorPosition(x - 1, y); break; }
                 }
             }
             return 0;
