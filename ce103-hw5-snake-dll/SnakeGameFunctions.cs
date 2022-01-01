@@ -220,7 +220,8 @@ namespace ce103_hw5_snake_dll
                         if (tempDirection == Direction.Right) break;
                         currentDirection = Direction.Left; break;
                     case ConsoleKey.P:
-                        pauseMenu(); break;
+                        pauseMenu(tempDirection); break;
+                    default: break;
                 }
             }
 
@@ -642,12 +643,26 @@ namespace ce103_hw5_snake_dll
         *
         *	  Print pause menu
         **/
-        public void pauseMenu()
+        public void pauseMenu(Direction tempDirection)
         {
             Console.SetCursorPosition(32, 11);
             Console.Write("***Paused***");
-
-            Console.ReadKey();
+            switch (Console.ReadKey(false).Key)
+            {
+                case ConsoleKey.UpArrow:
+                    if (tempDirection == Direction.Down) break;
+                    currentDirection = Direction.Up; break;
+                case ConsoleKey.DownArrow:
+                    if (tempDirection == Direction.Up) break;
+                    currentDirection = Direction.Down; break;
+                case ConsoleKey.RightArrow:
+                    if (tempDirection == Direction.Left) break;
+                    currentDirection = Direction.Right; break;
+                case ConsoleKey.LeftArrow:
+                    if (tempDirection == Direction.Right) break;
+                    currentDirection = Direction.Left; break;
+                default: break;
+            }
             Console.SetCursorPosition(32, 11);
             Console.Write("              ");
         }
