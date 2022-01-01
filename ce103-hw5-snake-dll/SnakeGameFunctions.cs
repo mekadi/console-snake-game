@@ -469,7 +469,7 @@ namespace ce103_hw5_snake_dll
                                 // While loop for wrong enters
                                 while (true)
                                 {
-                                    Console.Write("Enter Speed : ");
+                                    Console.Write("Enter Speed(Low numbers are faster) : ");
                                     try { value = int.Parse(Console.ReadLine()); break; }
                                     catch (Exception e) { Console.WriteLine(e.Message); Console.WriteLine("Please write some numbers..."); }
                                 }
@@ -548,6 +548,11 @@ namespace ce103_hw5_snake_dll
             y += 2;
             Console.SetCursorPosition(x, y);
             Console.Write("***Write \"delete\" to delete file and all scores***");
+            x += 15;
+            y += 2;
+            Console.SetCursorPosition(x, y);
+            Console.Write("Enter: ");
+
             string written = Console.ReadLine();
 
             // Delete file and scores if user writes delete
