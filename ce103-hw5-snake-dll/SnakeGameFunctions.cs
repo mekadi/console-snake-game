@@ -80,7 +80,7 @@ namespace ce103_hw5_snake_dll
                     }
                     case ConsoleKey.Enter:
                     {
-                            if (y == 14) { startGame(); }
+                            if (y == 14) { selectGameType(); }
                             else if (y == 15) { getTopScores(); }
                             else if (y == 16) { printControls(); }
                             else { Environment.Exit(0); }
@@ -118,6 +118,71 @@ namespace ce103_hw5_snake_dll
             while (!collision(snakeBodyCoord, lengthOfSnake))
             {
                 moveSnakeBody(lengthOfSnake, snakeBodyCoord);
+                if (eatBait(snakeBodyCoord, baitCoord))
+                {
+                    generateBait(snakeBodyCoord, baitCoord, lengthOfSnake);
+                    lengthOfSnake++;
+                    score = getScore(speed, score);
+
+                    Console.SetCursorPosition(74, 11);
+                    Console.Write("Score: " + score);
+
+                    Console.SetCursorPosition(53, 24);
+                    Console.Write("Length Of Snake: " + lengthOfSnake);
+                }
+                if (lengthOfSnake >= maxLengthOfSnake) break;
+                Thread.Sleep(speed);
+            }
+
+            // Save score to topscores.txt file
+            File.AppendAllText("topscores.txt", score.ToString() + Environment.NewLine);
+
+            Console.SetCursorPosition(30, 18);
+            Console.Write("SCORE IS SAVED");
+
+            // If length of snake greater than max length of snake call gamewin function else gameover
+            if (lengthOfSnake >= maxLengthOfSnake)
+            {
+                printGameWin();
+            }
+            else printGameOver();
+            Console.ReadLine();
+        }
+
+        /**
+        *	  @name Start Game 2 (startGame2)
+        *
+        *	  @brief Start game without effect of walls
+        *
+        *	  Load functions and remove logic that colliding with walls and start the game
+        **/
+        public void startGame2()
+        {
+            // Initializations and Declarations
+            int[,] snakeBodyCoord = new int[2, maxLengthOfSnake];
+            int[] baitCoord = new int[2];
+            int lengthOfSnake = 4;
+            int speed = 0;
+            int score = 0;
+            snakeBodyCoord[0, 0] = 10;
+            snakeBodyCoord[1, 0] = 10;
+            baitCoord[0] = 50;
+            baitCoord[1] = 10;
+            speed = getGameSpeed(speed);
+            loadEnvironment(lengthOfSnake);
+            generateBait(snakeBodyCoord, baitCoord, lengthOfSnake);
+
+            // While snake is not collided withself, process game functions
+            while (!isCollidedWithselfOrBait(snakeBodyCoord[0, 0], snakeBodyCoord[1, 0], snakeBodyCoord, lengthOfSnake, 1))
+            {
+                moveSnakeBody(lengthOfSnake, snakeBodyCoord);
+
+                // Making portal walls
+                if (snakeBodyCoord[0, 0] == 2) { Console.SetCursorPosition(snakeBodyCoord[0, 0], snakeBodyCoord[1, 0]); Console.Write("|"); snakeBodyCoord[0, 0] = 70; }
+                if (snakeBodyCoord[0, 0] == 71) { Console.SetCursorPosition(snakeBodyCoord[0, 0], snakeBodyCoord[1, 0]); Console.Write("|"); snakeBodyCoord[0, 0] = 3; }
+                if (snakeBodyCoord[1, 0] == 2) { Console.SetCursorPosition(snakeBodyCoord[0, 0], snakeBodyCoord[1, 0]); Console.Write("▬"); snakeBodyCoord[1, 0] = 20; }
+                if (snakeBodyCoord[1, 0] == 21) { Console.SetCursorPosition(snakeBodyCoord[0, 0], snakeBodyCoord[1, 0]); Console.Write("▬"); snakeBodyCoord[1, 0] = 3; }
+
                 if (eatBait(snakeBodyCoord, baitCoord))
                 {
                     generateBait(snakeBodyCoord, baitCoord, lengthOfSnake);
@@ -357,6 +422,74 @@ namespace ce103_hw5_snake_dll
                 return true;
             }
             return false;
+        }
+
+        /**
+        *	  @name Select Game Type (selectGameType)
+        *
+        *	  @brief Select Game Type
+        *
+        *	  Select the type of the game(with walls or transparent walls)
+        **/
+        public void selectGameType()
+        {
+            int x = 34;
+            int y = 10;
+
+            // Make printings
+            Console.Clear();
+            Console.SetCursorPosition(35, 10);
+            Console.Write("Start Game with Impassable Walls");
+            Console.SetCursorPosition(35, 11);
+            Console.Write("Start Game with Passable Walls");
+
+            Console.CursorVisible = false;
+            ConsoleKey key = ConsoleKey.NoName;
+
+            // Print selection arrow
+            Console.SetCursorPosition(x - 1, y);
+            Console.Write((char)9658);
+            Console.SetCursorPosition(x - 1, y);
+
+            // While loop for menu selection
+            while (key != ConsoleKey.Enter)
+            {
+                key = Console.ReadKey(false).Key;
+                switch (key)
+                {
+                    case ConsoleKey.UpArrow:
+                        {
+                            Console.SetCursorPosition(x - 1, y);
+                            Console.Write((char)32);
+                            Console.SetCursorPosition(x - 1, y);
+                            y--;
+                            if (y == 9) { y = 11; }
+                            Console.SetCursorPosition(x - 1, y);
+                            Console.Write((char)9658);
+                            Console.SetCursorPosition(x - 1, y);
+                            break;
+                        }
+                    case ConsoleKey.DownArrow:
+                        {
+                            Console.SetCursorPosition(x - 1, y);
+                            Console.Write((char)32);
+                            Console.SetCursorPosition(x - 1, y);
+                            y++;
+                            if (y == 12) { y = 10; }
+                            Console.SetCursorPosition(x - 1, y);
+                            Console.Write((char)9658);
+                            Console.SetCursorPosition(x - 1, y);
+                            break;
+                        }
+                    case ConsoleKey.Enter:
+                        {
+                            if (y == 10) { startGame(); }
+                            else if (y == 11) { startGame2(); }
+                            break;
+                        }
+                    default: { Console.SetCursorPosition(x - 1, y); Console.Write((char)9658); Console.SetCursorPosition(x - 1, y); break; }
+                }
+            }
         }
 
         /**
